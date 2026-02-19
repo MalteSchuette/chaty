@@ -1,0 +1,45 @@
+body{
+    background-color: black;
+    padding: 0;
+    margin: 8px ;
+    color: white;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#chat_window {
+    height: 75vh;
+    border: solid 5px greenyellow;
+    border-radius: 10px;
+    color: greenyellow;
+}
+
+.user_name {
+    padding-bottom: 14px;
+}
+
+#input_window {
+    display: flex;
+    justify-content: center;
+
+}
+
+#name_input {
+    width: 200px;
+    font-size: 24px;
+    background-color: darkgray;
+}
+
+#message_input {
+    width: calc(100% - 195px);
+    height: 200px;
+    background-color: darkgray;
+    font-size: 20px;
+}
+
+.message_box {
+    padding: 8px;
+}

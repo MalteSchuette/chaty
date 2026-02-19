@@ -1,22 +1,24 @@
 from django.shortcuts import render
 from .models import Chat
 from django.http import JsonResponse
+import json
 # Create your views here.
 
 
 def chat_view(request):
     if request.method == "GET":
-        chats = Chat.objects.all()
-        
-        chat_list = []
-        for c in chats:
-            chat_list.append({
-                "name": c.name,
-                "message": c.message,
-                "created_at": str(c.created_at)
-            })
-        
-        return JsonResponse({"results": chat_list})
+        chats = list(Chat.objects.values())
+        return JsonResponse(chats, safe=False)
 
-    if request.method == "Post":
-        print("Das hier ist POST")
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            print(data)
+            Chat.objects.create(
+                name=data.get('name'),
+                message=data.get('message')) 
+        except:
+            return JsonResponse("Das hat nicht geklappt mit dem Post.")
+        
+
+
